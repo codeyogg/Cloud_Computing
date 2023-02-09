@@ -29,14 +29,23 @@ How to Dockerize a Flask Application
 You should be able to run both the services as docker containers and test them using curl.
 
 Commands used:
-for Building the dockefile:
+-for Building the dockefile:
+
 docker build dockerfile -t s1 
-for mapping the ports of service1 and service2
+
+-for mapping the ports of service1 and service2:
+
 docker run  -p 0.0.0.0:5000:5000 s1
 docker run  -p 0.0.0.0:5001:5000 s2 &
+
+-for checking the running docker processes:
 docker ps
 
-Step 3. Connect the 2 services
+
+
+Step 3.
+
+Connect the 2 services
 -we use the command ro get the ip of both the services service :
 docker inspect d | grep IPAdd
 response:
