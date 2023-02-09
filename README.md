@@ -92,4 +92,4 @@ wget -q -O - 172.17.0.2:5000/weather?zip=95012
  
  
  
-
+screenshots and steps are attached in the same folder in a pdf file name as screenshots_with_steps.pdf
