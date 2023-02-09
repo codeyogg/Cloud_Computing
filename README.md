@@ -29,6 +29,34 @@ How to Dockerize a Flask Application
 You should be able to run both the services as docker containers and test them using curl.
 
 Step 3. Connect the 2 services
-Start both the containers.
-Create a new Python program which takes city as user input, sends request to first service.
-Then parses the zip code from the response returned. Then use it to send request to second service.
+-we use the command ro get the ip of both the services service :
+docker inspect d | grep IPAdd
+response:
+"SecondaryIPAddresses": null,
+            "IPAddress": "172.17.0.2",
+                    "IPAddress": "172.17.0.2",
+-sh into the first service and make the connection:
+ docker exec -it c sh 
+ 
+ 
+ -connectivity setup and service response:
+ wget -q -O - 172.17.0.2:5000/weather?zip=95129
+ Temperature (in kelvin unit) = 280.82
+ atmospheric pressure (in hPa unit) = 1024
+ humidity (in percentage) = 82
+ description = mist172.17.0.3 - - [09/Feb/2023 22:28:25] "GET /weather?zip=95129 HTTP/1.1" 200 -
+ 
+ wget -q -O - 172.17.0.2:5000/weather?zip=95129
+ Temperature (in kelvin unit) = 280.82
+ atmospheric pressure (in hPa unit) = 1024
+ humidity (in percentage) = 82
+ description = mist172.17.0.3 - - [09/Feb/2023 22:29:13] "GET /weather?zip=95129 HTTP/1.1" 200 -
+
+
+wget -q -O - 172.17.0.2:5000/weather?zip=95012
+172.17.0.3 - - [09/Feb/2023 22:29:19] "GET /weather?zip=95012 HTTP/1.1" 200 -
+                                                                              Temperature (in kelvin unit) = 280.13
+ atmospheric pressure (in hPa unit) = 1024
+ humidity (in percentage) = 96
+ description = light rain
+
