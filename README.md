@@ -76,4 +76,20 @@ wget -q -O - 172.17.0.2:5000/weather?zip=95012
  atmospheric pressure (in hPa unit) = 1024
  humidity (in percentage) = 96
  description = light rain
+ 
+ for connectivity:
+ 
+ docker run --net city-weather-net --name svc1 -p 0.0.0.0:5000:5000 -d s1
+ 
+ docker run --net city-weather-net --name svc2 -p 0.0.0.0:5001:5000 -d s2
+ 
+ 
+ for testing on curl:
+ 
+ 
+ 
+ curl -X GET "http://localhost:5000/zipcode?city=san%20jose"
+ 
+ 
+ 
 
